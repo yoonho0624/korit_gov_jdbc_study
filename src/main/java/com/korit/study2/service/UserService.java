@@ -62,14 +62,14 @@ public class UserService {
         System.out.println(foundUser);
     }
     // 회원 전체 조회
-    public List<GetUserListRespDto> aaa() {
+    public List<GetUserListRespDto> getUserList() {
         String sql = "select user_id, username, email, create_dt from user2_tb";
         List<GetUserListRespDto> userList = new ArrayList<>();
         try(Connection con = ConnectionFactory.getConnection();
             PreparedStatement ps = con.prepareStatement(sql);
             ResultSet rs = ps.executeQuery()) {
             while (rs.next()) {
-                userList.add();
+                userList.add(userDao.toGetUserListRespDto(rs));
             }
         } catch (SQLException e) {
             e.printStackTrace();

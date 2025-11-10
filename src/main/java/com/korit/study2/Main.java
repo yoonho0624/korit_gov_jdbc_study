@@ -75,8 +75,8 @@ public class Main {
                 // todo : 로그인 메소드 호출
             } else if ("3".equals(selectMenu)) {
                 System.out.println("[ 전체회원 조회");
-                List<User> userList = userService.userToString();
-                System.out.println(userList);
+                List<GetUserListRespDto> getUserListRespDto = userService.getUserList();
+                getUserListRespDto.forEach(System.out::println);
                 // todo : 전체회원 조회 메소드 호출
             } else if ("4".equals(selectMenu)) {
                 System.out.println("[ 회원 검색 ]");
