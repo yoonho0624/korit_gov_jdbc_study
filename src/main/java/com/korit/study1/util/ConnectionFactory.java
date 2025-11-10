@@ -1,6 +1,6 @@
-package com.korit.util;
+package com.korit.study1.util;
 
-import com.korit.config.DBConfig;
+import com.korit.study1.config.DBConfig;
 
 import java.sql.Connection;
 import java.sql.DriverManager;
