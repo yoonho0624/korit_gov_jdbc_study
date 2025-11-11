@@ -77,11 +77,7 @@ public class UserService {
         return userList;
     }
     // 회원 검색
-    public void searchUser(GetUserListRespDto getUserListRespDto) {
-        Optional<User> foundUser = userDao.findUserByUsername(getUserListRespDto.getUsername());
-        if (foundUser == null) {
-            System.out.println("사용자 정보를 다시 확인하세요.");
-        }
-        System.out.println(foundUser);
+    public List<GetUserListRespDto> getUserListKeyword(String keyword) {
+        return userDao.getUserListKeyword(keyword);
     }
 }

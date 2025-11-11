@@ -80,16 +80,10 @@ public class Main {
                 // todo : 전체회원 조회 메소드 호출
             } else if ("4".equals(selectMenu)) {
                 System.out.println("[ 회원 검색 ]");
-                GetUserListRespDto getUserListRespDto = new GetUserListRespDto();
-                while (true) {
-                    System.out.print("회원 검색 : ");
-                    getUserListRespDto.setUsername(scanner.nextLine());
-                    if (!userService.isEmpty(getUserListRespDto.getUsername())) {
-                        break;
-                    }
-                    System.out.println("다시 입력하세요.");
-                }
-                userService.searchUser(getUserListRespDto);
+                System.out.print("회원 검색 : ");
+                String keyword = scanner.nextLine();
+                List<GetUserListRespDto> userListRespDtos = userService.getUserListKeyword(keyword);
+                userListRespDtos.forEach(System.out::println);
                 // todo : 회원 검색 메소드 호출
             }
         }

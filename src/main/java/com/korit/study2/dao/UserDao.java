@@ -85,6 +85,22 @@ public class UserDao {
         return userList;
     }
     // user username으로 조회
+    public List<GetUserListRespDto> getUserListKeyword(String keyword) {
+        String sql = "select user_id, username, email, create_dt from user2_tb where username like ?";
+        List<GetUserListRespDto> userListRespDtos = new ArrayList<>();
+        try(Connection con = ConnectionFactory.getConnection();
+            PreparedStatement ps = con.prepareStatement(sql)) {
+            ps.setString(1, "%" + keyword + "%");
+            try(ResultSet rs = ps.executeQuery()) {
+                while (rs.next()) {
+                    userListRespDtos.add(toGetUserListRespDto(rs));
+                }
+            }
+        } catch (SQLException e) {
+            e.printStackTrace();
+        }
+        return userListRespDtos;
+    }
 
     public User toUser(ResultSet rs) throws SQLException {
         return User.builder()
